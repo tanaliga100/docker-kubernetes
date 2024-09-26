@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "name": "Docker Node.js Launch",
+      "type": "docker",
+      "request": "launch",
+      "preLaunchTask": "docker-run: debug",
+      "platform": "node",
+      "node": {
+        "package": "${workspaceFolder}/Fundamentals-HandsOn/L06-02 Using VS Code/package.json",
+        "localRoot": "${workspaceFolder}/Fundamentals-HandsOn/L06-02 Using VS Code"
+      }
+    }
+  ]
+}

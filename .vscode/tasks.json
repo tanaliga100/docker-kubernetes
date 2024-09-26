@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "docker-build",
+      "label": "docker-build",
+      "platform": "node",
+      "dockerBuild": {
+        "dockerfile": "${workspaceFolder}/Fundamentals-HandsOn/L06-02 Using VS Code/Dockerfile",
+        "context": "${workspaceFolder}/Fundamentals-HandsOn/L06-02 Using VS Code",
+        "pull": true
+      },
+      "node": {
+        "package": "${workspaceFolder}/Fundamentals-HandsOn/L06-02 Using VS Code/package.json"
+      }
+    },
+    {
+      "type": "docker-run",
+      "label": "docker-run: release",
+      "dependsOn": ["docker-build"],
+      "platform": "node",
+      "node": {
+        "package": "${workspaceFolder}/Fundamentals-HandsOn/L06-02 Using VS Code/package.json"
+      }
+    },
+    {
+      "type": "docker-run",
+      "label": "docker-run: debug",
+      "dependsOn": ["docker-build"],
+      "dockerRun": {
+        "env": {
+          "DEBUG": "*",
+          "NODE_ENV": "development"
+        }
+      },
+      "node": {
+        "package": "${workspaceFolder}/Fundamentals-HandsOn/L06-02 Using VS Code/package.json",
+        "enableDebugging": true
+      }
+    }
+  ]
+}
